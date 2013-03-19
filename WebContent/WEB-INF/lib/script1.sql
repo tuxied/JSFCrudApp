@@ -1,0 +1,1 @@
+CREATE USER kalmar PASSWORD 'kalmar'

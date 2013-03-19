@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<p:dialog widgetVar="personUpdateDialogWidget"
+		id="personUpdateDialogId" height="150" width="500" modal="true"
+		closable="true" draggable="false" resizable="false">
+		<h:form id="personUpdateDialogForm" prependId="false">
+			<h:panelGrid columns="2">
+				<h:outputText value="* #{bundle.personName}" />
+				<h:inputText value="#{personMB.person.name}" required="true" label="#{bundle.personName}" />
+				<h:outputText value="* #{bundle.personAge}" />
+				<h:inputText value="#{personMB.person.age}" required="true" label="#{bundle.personAge}" />
+		
+				<p:commandButton value="#{bundle.update}" icon="ui-icon-plus"
+					action="#{personMB.updatePerson()}"
+					update=":messageGrowl :personsForm:personsTable"
+					oncomplete="closeDialogIfSucess(xhr, status, args, personUpdateDialogWidget, 'personUpdateDialogId')" />
+				<p:commandButton value="#{bundle.cancel}" icon="ui-icon-cancel" actionListener="#{personMB.resetPerson()}"
+					onclick="personUpdateDialogWidget.hide();" type="button" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+</h:body>
+</html>

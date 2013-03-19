@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>CrudJSF</title>
+	<h:outputStylesheet library="css" name="main.css" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+
+<h:body>
+	<f:view contentType="text/html; charset=UTF-8" encoding="UTF-8" >
+		<div id="divTop" style="vertical-align: middle;">
+			<ui:insert name="divTop">
+				<ui:include src="top.xhtml" />
+			</ui:insert>
+		</div>
+
+		<div id="divLeft">
+			<ui:insert name="divLeft">
+				<ui:include src="left.xhtml" />
+			</ui:insert>
+		</div>
+
+		<div id="divMain">
+			<p:growl id="messageGrowl" />
+			<ui:insert name="divMain" />
+		</div>
+		
+		<h:outputScript library="javascript" name="jscodes.js" />
+	</f:view>
+</h:body>
+</html>

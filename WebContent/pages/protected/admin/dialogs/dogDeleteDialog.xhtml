@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<p:dialog widgetVar="dogDeleteDialogWidget" id="dogDeleteDialogId" height="150" width="500" modal="true"
+		closable="true" draggable="false" resizable="false">
+		<h:form id="dogDeleteDialogForm" prependId="false">
+			#{bundle.deleteRecord}: <h:outputText value="#{dogMB.dog.name}" /><br/><br/>
+
+			<p:commandButton value="#{bundle.delete}" icon="ui-icon-plus" action="#{dogMB.deleteDog()}"
+				update=":messageGrowl :dogsForm:dogsTable"
+				oncomplete="closeDialogIfSucess(xhr, status, args, dogDeleteDialogWidget, 'dogDeleteDialogId')" />
+			<p:commandButton value="#{bundle.cancel}" icon="ui-icon-cancel" actionListener="#{dogMB.resetDog()}"
+				onclick="dogDeleteDialogWidget.hide();" type="button" />
+		</h:form>
+	</p:dialog>
+</h:body>
+</html>

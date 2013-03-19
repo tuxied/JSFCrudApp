@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<ui:composition template="/pages/protected/templates/master.xhtml">
+		<ui:define name="divMain">
+			<h3>#{bundle.personDogs}: <h:outputText value="#{personMB.personWithDogs.name}" /></h3> 
+			<h:form id="personsForm">
+				<p:dataTable id="personsTable" value="#{personMB.personWithDogs.dogs}" var="dog" emptyMessage="#{bundle.noRecords}" paginator="true" rows="10"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="#{bundle.dogName}" />
+						</f:facet>
+
+						<h:outputText value="#{dog.name}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="#{bundle.dogAge}" />
+						</f:facet>
+
+						<h:outputText value="#{dog.age}" />
+					</p:column>
+					<p:column>
+						<p:commandButton value="#{bundle.remove}" icon="ui-icon-plus" actionListener="#{personMB.resetDog}" onclick="personRemoveDogDialogWidget.show();" update=":personRemoveDogDialogForm" >
+							<f:setPropertyActionListener target="#{personMB.dog}" value="#{dog}" />
+						</p:commandButton>
+						<p:spacer width="10px" />
+					</p:column>
+
+				</p:dataTable>
+				<p:commandButton value="#{bundle.add}  #{bundle.dog}" icon="ui-icon-plus" onclick="personAddDogDialogWidget.show();" update=":personAddDogDialogForm" />
+			</h:form>
+
+			<ui:include src="/pages/protected/defaultUser/personDogs/dialogs/personAddDogDialog.xhtml" />
+			<ui:include src="/pages/protected/defaultUser/personDogs/dialogs/personRemoveDogDialog.xhtml" />
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

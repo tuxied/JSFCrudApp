@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<ui:composition template="/pages/protected/templates/master.xhtml">
+		<ui:define name="divMain">
+			<h:form id="personsForm">
+				<p:dataTable id="personsTable" value="#{personMB.allPersons}" var="person" emptyMessage="#{bundle.noRecords}" paginator="true" rows="10"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="#{bundle.personName}" />
+						</f:facet>
+
+						<h:outputText value="#{person.name}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="#{bundle.personAge}" />
+						</f:facet>
+
+						<h:outputText value="#{person.age}" />
+					</p:column>
+					<p:column>
+						<p:commandButton value="#{bundle.detail}" icon="ui-icon-bullet" onclick="personDetailDialogWidget.show();" update=":personDetailDialogForm" >
+							<f:setPropertyActionListener target="#{personMB.personWithDogsForDetail}" value="#{person}" />
+						</p:commandButton> 
+						<p:spacer width="10px" />
+						<p:commandButton value="#{bundle.update}" icon="ui-icon-pencil" update=":personUpdateDialogForm" onclick="personUpdateDialogWidget.show();" >
+							<f:setPropertyActionListener target="#{personMB.person}" value="#{person}" />
+						</p:commandButton>
+						<p:spacer width="10px" />
+						<p:commandButton value="#{bundle.delete}" icon="ui-icon-trash" update=":personDeleteDialogForm" onclick="personDeleteDialogWidget.show();" >
+							<f:setPropertyActionListener target="#{personMB.person}" value="#{person}" />
+						</p:commandButton>
+						<p:spacer width="10px" />
+						<p:commandButton value="#{bundle.personEditDogs}" icon="ui-icon-contact" ajax="false"
+							action="#{personMB.editPersonDogs()}">
+								<f:setPropertyActionListener target="#{personMB.person}" value="#{person}" />
+						</p:commandButton>
+					</p:column>
+
+				</p:dataTable>
+				<p:commandButton value="#{bundle.create} #{bundle.person}" icon="ui-icon-plus" update=":personCreateDialogForm"
+					actionListener="#{personMB.resetPerson()}" onclick="personCreateDialogWidget.show();" />
+			</h:form>
+
+			<ui:include src="/pages/protected/defaultUser/dialogs/personCreateDialog.xhtml" />
+			<ui:include src="/pages/protected/defaultUser/dialogs/personUpdateDialog.xhtml" />
+			<ui:include src="/pages/protected/defaultUser/dialogs/personDeleteDialog.xhtml" />
+			<ui:include src="/pages/protected/defaultUser/dialogs/personDetailDialog.xhtml" />
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

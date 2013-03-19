@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui" >
+<h:head>
+</h:head>
+<h:body>
+	<ui:composition template="/pages/protected/templates/master.xhtml">
+		<ui:define name="divLeft"/>
+		<ui:define name="divMain">
+			<h:form>
+				<h1>#{bundle.accessDeniedHeader}</h1>
+				<br />
+				<h:graphicImage library="images" name="accessDenied.png" />
+				<br />
+				#{bundle.accessDeniedText}<br />
+				<p:commandButton action="/pages/protected/index.xhtml" value="#{bundle.accessDeniedButton}" ajax="false" immediate="true" />
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

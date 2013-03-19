@@ -1,0 +1,73 @@
+#topMessage {
+	vertical-align: middle;
+}
+
+html {
+	overflow: hidden;
+}
+
+body {
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+}
+
+h1 {
+	color: black;
+}
+
+a:link,a:visited,a:hover,a:active {
+	color: black;	
+}
+
+.menuButton{
+	font-weight: bold;
+	font-size: 23px;
+	top:10px;
+	bottom: 10px;
+}
+
+#divTop {
+	padding: 0;
+	padding-left: 10px;
+	margin: 0;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	right: 20px;
+	height: 80px;
+	overflow: hidden;
+	background: #dddddd;
+	border: 1px solid darkGray;	
+}
+
+#divLeft {
+	padding: 0;
+	padding-left: 10px;
+	margin: 0;
+	position: absolute;
+	top: 100px;
+	left: 10px;
+	bottom: 20px;
+	overflow: auto;
+	width: 250px;
+	border: thin solid lightGray;
+	background: #eeeeee;
+	font-size: 35px;
+}
+
+#divMain {
+	padding: 0;
+	padding-top: 10px;
+	margin: 0;
+	position: absolute;
+	top: 100px;
+	left: 280px;
+	right: 20px;
+	bottom: 20px;
+	overflow: auto;
+	border: thin solid lightGray;
+	background: #fefeef;
+}

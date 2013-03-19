@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<p:dialog widgetVar="dogCreateDialogWidget"
+		id="dogCreateDialogId" height="150" width="500" modal="true"
+		closable="true" draggable="false" resizable="false">
+		<h:form id="dogCreateDialogForm" prependId="false">
+			<h:panelGrid columns="2">
+				<h:outputText value="* #{bundle.dogName}" />
+				<h:inputText value="#{dogMB.dog.name}" required="true" label="#{bundle.dogName}" >
+					<f:validateLength minimum="4" />
+				</h:inputText>
+				<h:outputText value="* #{bundle.dogAge}" />
+				<h:inputText value="#{dogMB.dog.age}" required="true" label="#{bundle.dogAge}" />
+		
+				<p:commandButton value="#{bundle.create}" icon="ui-icon-plus"
+					action="#{dogMB.createDog()}"
+					update=":messageGrowl :dogsForm:dogsTable"
+					oncomplete="closeDialogIfSucess(xhr, status, args, dogCreateDialogWidget, 'dogCreateDialogId')" />
+				<p:commandButton value="#{bundle.cancel}" icon="ui-icon-cancel" actionListener="#{dogMB.resetDog()}"
+					onclick="dogCreateDialogWidget.hide();" type="button" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+</h:body>
+</html>

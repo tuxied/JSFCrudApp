@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<p:dialog widgetVar="personDetailDialogWidget" id="personDetailDialogId" width="500" modal="true" closable="false"
+		draggable="false" resizable="false">
+		<h:form id="personDetailDialogForm" prependId="false">
+			<h:panelGrid columns="2">
+				<h:outputText value="#{bundle.personName}" />
+				<h:outputText value="#{personMB.personWithDogsForDetail.name}" />
+				<h:outputText value="#{bundle.personAge}" />
+				<h:outputText value="#{personMB.personWithDogsForDetail.age}" />
+			</h:panelGrid>
+ 
+			<p:dataTable value="#{personMB.personWithDogsForDetail.dogs}" var="dog">
+				<f:facet name="header">#{bundle.dogPlural}</f:facet>
+				<p:column>
+					<h:outputText value="#{dog.name}" /> - <h:outputText value="#{dog.age}" />
+				</p:column>
+			</p:dataTable>
+
+			<p:commandButton value="#{bundle.ok}" icon="ui-icon-arrow-1-w"
+				actionListener="#{personMB.resetPersonWithDogsForDetail()}" onclick="personDetailDialogWidget.hide();" />
+		</h:form>
+	</p:dialog>
+</h:body>
+</html>
