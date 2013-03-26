@@ -22,6 +22,7 @@ public class DogFacade implements Serializable{
 		Dog persistedDog = dogDAO.find(dog.getId());
 		persistedDog.setAge(dog.getAge());
 		persistedDog.setName(dog.getName());
+		persistedDog.setWeight(dog.getWeight());
 		dogDAO.update(persistedDog);
 		dogDAO.commitAndCloseTransaction();
 	}

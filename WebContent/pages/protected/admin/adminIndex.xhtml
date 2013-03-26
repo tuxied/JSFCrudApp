@@ -24,6 +24,13 @@
 						<h:outputText value="#{dog.age}" />
 					</p:column>
 					<p:column>
+						<f:facet name="header">
+							<h:outputText value="#{bundle.dogWeight}" />
+						</f:facet>
+
+						<h:outputText value="#{dog.weight}" />
+					</p:column>					
+					<p:column>
 						<p:commandButton value="#{bundle.detail}" icon="ui-icon-bullet" onclick="dogDetailDialogWidget.show();" update=":dogDetailDialogForm" >
 							<f:setPropertyActionListener target="#{dogMB.dog}" value="#{dog}" />
 						</p:commandButton> 

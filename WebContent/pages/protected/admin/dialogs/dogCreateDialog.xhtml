@@ -16,6 +16,8 @@
 				</h:inputText>
 				<h:outputText value="* #{bundle.dogAge}" />
 				<h:inputText value="#{dogMB.dog.age}" required="true" label="#{bundle.dogAge}" />
+				<h:outputText value="* #{bundle.dogWeight}" />
+				<h:inputText value="#{dogMB.dog.weight}" required="true" label="#{bundle.dogWeight}" />
 		
 				<p:commandButton value="#{bundle.create}" icon="ui-icon-plus"
 					action="#{dogMB.createDog()}"

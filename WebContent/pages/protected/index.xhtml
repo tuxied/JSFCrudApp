@@ -1,12 +1,67 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui" >
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+	
 <h:body>
+
 	<ui:composition template="/pages/protected/templates/master.xhtml">
 		<ui:define name="divMain">
-			#{bundle.welcomeMessage} :<br/>
-			<h:graphicImage library="images" name="logoReal.png" />
-		</ui:define>	
+<!-- 			#{bundle.welcomeMessage} :<br/> -->
+<!-- 			<h:graphicImage library="images" name="logoReal.png" /> -->
+
+			<h:form id="personCreateBookingForm" prependId="false">
+			
+				<h:panelGrid columns="2">
+
+				
+					#{bundle.personName} *
+					<h:inputText id="name" value="#{personMB.person.name}" required="true" label="#{bundle.personName}"><f:validateLength minimum="3" maximum="25"/></h:inputText> 
+					
+					<h:outputText value="#{bundle.personEmail}" />					
+					<h:inputText id="email" value="#{personMB.person.email}" required="false" label="#{bundle.personEmail}"></h:inputText>
+
+					<h:outputText value="#{bundle.personPhone}" />
+					<h:inputText value="#{personMB.person.phone}" required="false" label="#{bundle.personPhone}" />
+			
+				    Start *
+				    <p:calendar value="#{personMB.person.date1}" pattern="MM/dd/yyyy HH:mm" required="true"/>
+				    Slut *
+				    <p:calendar value="#{personMB.person.date2}" pattern="MM/dd/yyyy HH:mm" required="true"/>    
+				    
+				
+		            <h:outputText value="#{personMB.person.date1}">  
+		                <f:convertDateTime pattern="MM/dd/yyyy HH:mm" />  
+		            </h:outputText> 
+		            
+		            <h:outputText value="#{personMB.person.date2}">  
+		                <f:convertDateTime pattern="MM/dd/yyyy HH:mm" />  
+		            </h:outputText>  
+		            
+<!-- 		            <p:commandButton value="Submit" update="display" oncomplete="dialog.show()" />   -->
+				
+					<p:commandButton value="Boka Relaxen" icon="ui-icon"
+						action="#{personMB.createPerson()}" update="bookings"/>
+						<!-- oncomplete="validate(xhr, status, args, personCreateDialogWidget)" -->  
+						
+					
+					<p> </p>		
+					<p:dataList id="bookings" value="#{personMB.persons}" var="booking" itemType="square" type="ordered">  
+					    #{booking.date1Konverted}, #{booking.date2}, #{booking.name}, #{booking.email}, #{booking.phone}       
+					</p:dataList>  	
+
+				</h:panelGrid>
+			</h:form>
+			
+
+
+			
+		</ui:define>
+		
+		
+		
+
+			
 	</ui:composition>
 </h:body>
 </html>
+

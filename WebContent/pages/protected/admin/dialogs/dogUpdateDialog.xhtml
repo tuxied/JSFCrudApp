@@ -15,7 +15,9 @@
 					<f:validateLength minimum="4" />
 				</h:inputText>
 				<h:outputText value="* #{bundle.dogAge}" />
-				<h:inputText value="#{dogMB.dog.age}" required="true" label="#{bundle.dogAge}" />
+				<h:inputText value="#{dogMB.dog.age}" required="true" label="#{bundle.dogWeight}" />
+				<h:outputText value="* #{bundle.dogWeight}" />
+				<h:inputText value="#{dogMB.dog.weight}" required="true" label="#{bundle.dogWeight}" />				
 		
 				<p:commandButton value="#{bundle.update}" icon="ui-icon-plus"
 					action="#{dogMB.updateDog()}"

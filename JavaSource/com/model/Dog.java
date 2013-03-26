@@ -18,6 +18,9 @@ public class Dog implements Serializable{
 	private int id;
 	private int age;
 	private String name;
+	private int weight;
+
+
 
 	@ManyToMany(mappedBy="dogs")
 	private List<Person> persons;
@@ -28,6 +31,14 @@ public class Dog implements Serializable{
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public int getWeight() {
+		return weight;
+	}
+
+	public void setWeight(int weight) {
+		this.weight = weight;
 	}
 
 	public int getAge() {

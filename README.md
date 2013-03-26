@@ -6,6 +6,7 @@ användare med rollerna user och admin behöver skapas i user tabellen i databasen
 
 e-mail är inloggnings uppgiften i webappen.
 
+http://localhost:8080/JSFCrudApp/
 
 ----------------------------------
 http://uaihebert.com/?p=1440

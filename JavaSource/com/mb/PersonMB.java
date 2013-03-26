@@ -179,6 +179,15 @@ public class PersonMB extends AbstractMB implements Serializable {
 		return persons;
 	}
 
+	public List<Person> getPersons() {
+		persons = getPersonFacade().listAll();
+		return persons;
+	}
+	
+	public void setPersons(List<Person> persons) {
+		this.persons = persons;
+	}
+	
 	private void loadPersons() {
 		persons = getPersonFacade().listAll();
 	}

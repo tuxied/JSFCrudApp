@@ -1,6 +1,8 @@
 package com.model;
 
 import java.io.Serializable;
+
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -21,7 +23,14 @@ public class Person implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private int age;
+
 	private String name;
+	private String email;
+	private String phone;
+	private Date date1;
+	private String date1Konverted;
+	private Date date2;
+
 
 	@ManyToMany
 	private List<Dog> dogs;
@@ -33,7 +42,27 @@ public class Person implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+    
 
+	public Date getDate1() {
+		return date1;
+	}
+
+	public void setDate1(Date date1) {
+		this.date1 = date1;
+		
+		setDate1Konverted(""+date1.getYear()+" "+date1.getMonth()+" "+date1.getDate()+" "+date1.getHours()+" "+date1.getMinutes());
+	}  
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -71,5 +100,29 @@ public class Person implements Serializable {
 		}
 
 		return false;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public Date getDate2() {
+		return date2;
+	}
+
+	public void setDate2(Date date2) {
+		this.date2 = date2;
+	}
+
+	public String getDate1Konverted() {
+		return date1Konverted;
+	}
+
+	public void setDate1Konverted(String date1Konverted) {
+		this.date1Konverted = date1Konverted;
 	}
 }
